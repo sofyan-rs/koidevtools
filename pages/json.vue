@@ -7,7 +7,11 @@
             <span
                 class="text-base sm:text-lg font-semibold tracking-tight text-gray-900 dark:text-gray-100 select-none"
             >
-                { } JSON Formatter
+                <UIcon
+                    name="i-heroicons-code-bracket-square"
+                    class="w-5 h-5 mr-1 inline-block align-text-bottom"
+                />
+                JSON Formatter
             </span>
 
             <!-- Mobile tab toggle -->
@@ -211,7 +215,11 @@
                             "
                             class="w-3 h-3"
                         />
-                        {{ validationStatus === 'valid' ? 'Valid JSON' : 'Invalid JSON' }}
+                        {{
+                            validationStatus === "valid"
+                                ? "Valid JSON"
+                                : "Invalid JSON"
+                        }}
                     </span>
                 </div>
                 <div class="flex-1 overflow-auto">
@@ -299,10 +307,7 @@ const sortObjectKeys = (val: unknown): unknown => {
 
 /** Escape HTML entities so raw JSON can be injected as innerHTML. */
 const escapeHtml = (str: string) =>
-    str
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
+    str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 /** Syntax-highlight a formatted JSON string with coloured spans. */
 const highlight = (json: string): string =>
@@ -320,19 +325,19 @@ const highlight = (json: string): string =>
             if (/null/.test(match))
                 return `<span class="json-null">${match}</span>`;
             return `<span class="json-number">${match}</span>`;
-        }
+        },
     );
 
 // ── Computed ─────────────────────────────────────────────────────────────────
 
 const highlightedOutput = computed(() =>
-    output.value ? highlight(output.value) : ""
+    output.value ? highlight(output.value) : "",
 );
 
 const inputSize = computed(() => formatBytes(new Blob([input.value]).size));
 const outputSize = computed(() => formatBytes(new Blob([output.value]).size));
 const lineCount = computed(() =>
-    output.value ? output.value.split("\n").length : 0
+    output.value ? output.value.split("\n").length : 0,
 );
 
 const formatBytes = (bytes: number) =>
@@ -432,15 +437,28 @@ const clearAll = () => {
 
 <style>
 /* JSON syntax highlight colours */
-.json-key    { @apply text-violet-600 dark:text-violet-400; }
-.json-string { @apply text-green-600  dark:text-green-400;  }
-.json-number { @apply text-blue-600   dark:text-blue-400;   }
-.json-bool   { @apply text-amber-600  dark:text-amber-400;  }
-.json-null   { @apply text-red-500    dark:text-red-400;    }
+.json-key {
+    @apply text-violet-600 dark:text-violet-400;
+}
+.json-string {
+    @apply text-green-600  dark:text-green-400;
+}
+.json-number {
+    @apply text-blue-600   dark:text-blue-400;
+}
+.json-bool {
+    @apply text-amber-600  dark:text-amber-400;
+}
+.json-null {
+    @apply text-red-500    dark:text-red-400;
+}
 
 /* Larger touch targets on mobile */
 @media (max-width: 767px) {
     .touch-target button,
-    .touch-target { min-width: 36px; min-height: 36px; }
+    .touch-target {
+        min-width: 36px;
+        min-height: 36px;
+    }
 }
 </style>

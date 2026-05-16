@@ -7,7 +7,11 @@
             <span
                 class="text-base sm:text-lg font-semibold tracking-tight text-gray-900 dark:text-gray-100 select-none"
             >
-                🔑 JWT Decoder &amp; Encoder
+                <UIcon
+                    name="i-heroicons-key"
+                    class="w-5 h-5 mr-1 inline-block align-text-bottom"
+                />
+                JWT Debugger
             </span>
 
             <!-- Section tabs -->
@@ -289,10 +293,11 @@
                     >
                         Secret / Key
                     </label>
-                    <input
+                    <UInput
                         v-model="encodeSecret"
                         type="text"
-                        class="font-mono outline-none focus:ring-2 focus:ring-primary-500 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-lg px-3 py-2 text-sm"
+                        size="sm"
+                        :ui="{ base: 'font-mono' }"
                     />
                 </div>
 
@@ -303,19 +308,17 @@
                     >
                         Algorithm
                     </label>
-                    <select
+                    <USelect
                         v-model="encodeAlg"
-                        class="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-lg px-2 py-1.5 text-sm outline-none cursor-pointer"
-                    >
-                        <option>HS256</option>
-                        <option>HS384</option>
-                        <option>HS512</option>
-                    </select>
+                        :options="['HS256', 'HS384', 'HS512']"
+                        size="sm"
+                    />
                 </div>
 
                 <!-- Generate button -->
                 <UButton
                     color="primary"
+                    size="sm"
                     icon="i-heroicons-bolt"
                     @click="generateJwt"
                 >
@@ -387,7 +390,7 @@
 </template>
 
 <script setup lang="ts">
-useHead({ title: "JWT Decoder & Encoder" });
+useHead({ title: "JWT Debugger" });
 
 // ── Base64URL helpers ─────────────────────────────────────────────────────────
 

@@ -4,14 +4,15 @@
         <aside
             class="w-12 sm:w-14 flex flex-col shrink-0 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 z-10"
         >
-            <!-- Logo -->
-            <div
-                class="flex items-center justify-center h-10 sm:h-11 border-b border-gray-200 dark:border-gray-700 shrink-0"
+            <!-- Logo (links to home) -->
+            <NuxtLink
+                to="/"
+                class="flex items-center justify-center h-10 sm:h-11 border-b border-gray-200 dark:border-gray-700 shrink-0 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
             >
                 <span class="text-base sm:text-lg select-none leading-none"
                     >✦</span
                 >
-            </div>
+            </NuxtLink>
 
             <!-- Tool nav -->
             <nav
@@ -21,7 +22,11 @@
                     text="Markdown Editor"
                     :popper="{ placement: 'right' }"
                 >
-                    <NuxtLink v-slot="{ isActive, navigate }" to="/" custom>
+                    <NuxtLink
+                        v-slot="{ isActive, navigate }"
+                        to="/markdown"
+                        custom
+                    >
                         <UButton
                             icon="i-heroicons-document-text"
                             color="gray"
@@ -49,17 +54,57 @@
                     </NuxtLink>
                 </UTooltip>
 
-                <UTooltip
-                    text="JWT Decoder / Encoder"
-                    :popper="{ placement: 'right' }"
-                >
+                <UTooltip text="JSON to Dart" :popper="{ placement: 'right' }">
+                    <NuxtLink v-slot="{ isActive, navigate }" to="/dart" custom>
+                        <UButton
+                            icon="i-heroicons-cube"
+                            color="gray"
+                            :variant="isActive ? 'soft' : 'ghost'"
+                            size="sm"
+                            aria-label="JSON to Dart"
+                            @click="navigate"
+                        />
+                    </NuxtLink>
+                </UTooltip>
+
+                <UTooltip text="Regex Tester" :popper="{ placement: 'right' }">
+                    <NuxtLink
+                        v-slot="{ isActive, navigate }"
+                        to="/regex"
+                        custom
+                    >
+                        <UButton
+                            icon="i-heroicons-magnifying-glass"
+                            color="gray"
+                            :variant="isActive ? 'soft' : 'ghost'"
+                            size="sm"
+                            aria-label="Regex Tester"
+                            @click="navigate"
+                        />
+                    </NuxtLink>
+                </UTooltip>
+
+                <UTooltip text="API Tester" :popper="{ placement: 'right' }">
+                    <NuxtLink v-slot="{ isActive, navigate }" to="/api" custom>
+                        <UButton
+                            icon="i-heroicons-paper-airplane"
+                            color="gray"
+                            :variant="isActive ? 'soft' : 'ghost'"
+                            size="sm"
+                            aria-label="API Tester"
+                            @click="navigate"
+                        />
+                    </NuxtLink>
+                </UTooltip>
+
+                <UTooltip text="JWT Debugger" :popper="{ placement: 'right' }">
                     <NuxtLink v-slot="{ isActive, navigate }" to="/jwt" custom>
                         <UButton
                             icon="i-heroicons-key"
                             color="gray"
                             :variant="isActive ? 'soft' : 'ghost'"
                             size="sm"
-                            aria-label="JWT Decoder / Encoder"
+                            aria-label="JWT Debugger"
                             @click="navigate"
                         />
                     </NuxtLink>
