@@ -2,7 +2,7 @@
     <div class="h-full flex flex-col overflow-hidden">
         <!-- Header -->
         <header
-            class="flex items-center justify-between px-3 sm:px-4 py-2 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shrink-0"
+            class="flex items-center justify-between px-3 sm:px-4 h-10 sm:h-11 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shrink-0"
         >
             <span
                 class="text-base sm:text-lg font-semibold tracking-tight text-gray-900 dark:text-gray-100 select-none truncate"

@@ -1,9 +1,8 @@
 <template>
     <div class="h-full flex flex-col overflow-hidden">
-
         <!-- Header -->
         <header
-            class="flex items-center justify-between px-3 sm:px-4 py-2 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shrink-0"
+            class="flex items-center justify-between px-3 sm:px-4 h-10 sm:h-11 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shrink-0"
         >
             <span
                 class="text-base sm:text-lg font-semibold tracking-tight text-gray-900 dark:text-gray-100 select-none"
@@ -21,18 +20,22 @@
             >
                 <button
                     class="px-3 py-1 rounded-md transition-colors"
-                    :class="activeTab === 'input'
-                        ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-sm'
-                        : 'text-gray-500 dark:text-gray-400'"
+                    :class="
+                        activeTab === 'input'
+                            ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-sm'
+                            : 'text-gray-500 dark:text-gray-400'
+                    "
                     @click="activeTab = 'input'"
                 >
                     Input
                 </button>
                 <button
                     class="px-3 py-1 rounded-md transition-colors"
-                    :class="activeTab === 'results'
-                        ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-sm'
-                        : 'text-gray-500 dark:text-gray-400'"
+                    :class="
+                        activeTab === 'results'
+                            ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-sm'
+                            : 'text-gray-500 dark:text-gray-400'
+                    "
                     @click="activeTab = 'results'"
                 >
                     Results
@@ -47,9 +50,11 @@
             <!-- Regex input -->
             <div
                 class="flex items-center flex-1 min-w-0 font-mono text-sm bg-gray-50 dark:bg-gray-800 border rounded-lg px-3 py-1.5 gap-1 focus-within:ring-2 focus-within:ring-primary-500"
-                :class="regexError
-                    ? 'border-red-400 dark:border-red-600'
-                    : 'border-gray-200 dark:border-gray-700'"
+                :class="
+                    regexError
+                        ? 'border-red-400 dark:border-red-600'
+                        : 'border-gray-200 dark:border-gray-700'
+                "
             >
                 <span class="text-gray-400 select-none shrink-0">/</span>
                 <input
@@ -66,9 +71,11 @@
                         v-for="f in FLAG_LIST"
                         :key="f"
                         class="px-1.5 py-0.5 rounded text-xs font-mono font-semibold transition-colors"
-                        :class="flags[f]
-                            ? 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
-                            : 'text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300'"
+                        :class="
+                            flags[f]
+                                ? 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
+                                : 'text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300'
+                        "
                         :title="FLAG_LABELS[f]"
                         @click="flags[f] = !flags[f]"
                     >
@@ -114,20 +121,24 @@
                 v-if="regexError"
                 class="flex items-center gap-2 px-3 sm:px-4 py-2 bg-red-50 dark:bg-red-950 border-b border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 text-xs font-mono shrink-0"
             >
-                <UIcon name="i-heroicons-exclamation-triangle" class="w-3.5 h-3.5 shrink-0" />
+                <UIcon
+                    name="i-heroicons-exclamation-triangle"
+                    class="w-3.5 h-3.5 shrink-0"
+                />
                 {{ regexError }}
             </div>
         </Transition>
 
         <!-- Main editor area -->
         <div class="flex flex-1 overflow-hidden bg-gray-50 dark:bg-gray-950">
-
             <!-- Left pane: test string input -->
             <div
                 class="flex-1 flex flex-col min-w-0"
                 :class="isMobile && activeTab !== 'input' ? 'hidden' : 'flex'"
             >
-                <div class="px-3 py-1 text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wide bg-gray-50 dark:bg-gray-950 border-b border-gray-200 dark:border-gray-700 select-none">
+                <div
+                    class="px-3 py-1 text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wide bg-gray-50 dark:bg-gray-950 border-b border-gray-200 dark:border-gray-700 select-none"
+                >
                     Test String
                 </div>
                 <textarea
@@ -139,7 +150,9 @@
             </div>
 
             <!-- Divider -->
-            <div class="hidden md:block w-px bg-gray-200 dark:bg-gray-700 shrink-0" />
+            <div
+                class="hidden md:block w-px bg-gray-200 dark:bg-gray-700 shrink-0"
+            />
 
             <!-- Right pane: results -->
             <div
@@ -153,18 +166,22 @@
                     <div class="flex items-center gap-0 text-xs font-medium">
                         <button
                             class="px-3 py-1 rounded-md transition-colors"
-                            :class="rightTab === 'match'
-                                ? 'bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm border border-gray-200 dark:border-gray-700'
-                                : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'"
+                            :class="
+                                rightTab === 'match'
+                                    ? 'bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm border border-gray-200 dark:border-gray-700'
+                                    : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
+                            "
                             @click="rightTab = 'match'"
                         >
                             Match
                         </button>
                         <button
                             class="px-3 py-1 rounded-md transition-colors"
-                            :class="rightTab === 'replace'
-                                ? 'bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm border border-gray-200 dark:border-gray-700'
-                                : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'"
+                            :class="
+                                rightTab === 'replace'
+                                    ? 'bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm border border-gray-200 dark:border-gray-700'
+                                    : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
+                            "
                             @click="rightTab = 'replace'"
                         >
                             Replace
@@ -175,10 +192,15 @@
                 <!-- ── Match tab ───────────────────────────────────────── -->
                 <template v-if="rightTab === 'match'">
                     <!-- Highlighted text -->
-                    <div class="flex-1 overflow-auto p-3 sm:p-4 bg-white dark:bg-gray-900 min-h-0">
+                    <div
+                        class="flex-1 overflow-auto p-3 sm:p-4 bg-white dark:bg-gray-900 min-h-0"
+                    >
                         <pre
                             class="font-mono text-sm leading-relaxed text-gray-900 dark:text-gray-100 whitespace-pre-wrap break-words"
-                            v-html="highlightedText || '<span class=\'text-gray-400 dark:text-gray-600 select-none\'>Highlighted matches will appear here…</span>'"
+                            v-html="
+                                highlightedText ||
+                                '<span class=\'text-gray-400 dark:text-gray-600 select-none\'>Highlighted matches will appear here…</span>'
+                            "
                         />
                     </div>
 
@@ -193,24 +215,33 @@
                             class="px-3 py-2 text-xs"
                         >
                             <div class="flex items-center gap-2 flex-wrap">
-                                <span class="font-semibold text-primary-600 dark:text-primary-400 shrink-0">
+                                <span
+                                    class="font-semibold text-primary-600 dark:text-primary-400 shrink-0"
+                                >
                                     #{{ i + 1 }}
                                 </span>
-                                <span class="font-mono bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-200 px-1.5 py-0.5 rounded">
-                                    {{ match[0] || '(empty)' }}
+                                <span
+                                    class="font-mono bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-200 px-1.5 py-0.5 rounded"
+                                >
+                                    {{ match[0] || "(empty)" }}
                                 </span>
                                 <span class="text-gray-400 dark:text-gray-500">
-                                    index {{ match.index }}–{{ match.index! + match[0].length }}
+                                    index {{ match.index }}–{{
+                                        match.index! + match[0].length
+                                    }}
                                 </span>
                             </div>
                             <!-- Capture groups -->
-                            <div v-if="match.length > 1" class="mt-1 flex flex-wrap gap-1.5 pl-6">
+                            <div
+                                v-if="match.length > 1"
+                                class="mt-1 flex flex-wrap gap-1.5 pl-6"
+                            >
                                 <span
                                     v-for="(group, gi) in match.slice(1)"
                                     :key="gi"
                                     class="font-mono text-xs bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300 px-1.5 py-0.5 rounded"
                                 >
-                                    ${{ gi + 1 }}: {{ group ?? 'undefined' }}
+                                    ${{ gi + 1 }}: {{ group ?? "undefined" }}
                                 </span>
                             </div>
                         </div>
@@ -228,10 +259,17 @@
                 <!-- ── Replace tab ─────────────────────────────────────── -->
                 <template v-if="rightTab === 'replace'">
                     <!-- Replacement input -->
-                    <div class="shrink-0 px-3 sm:px-4 py-2.5 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
-                        <label class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide block mb-1.5">
+                    <div
+                        class="shrink-0 px-3 sm:px-4 py-2.5 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700"
+                    >
+                        <label
+                            class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide block mb-1.5"
+                        >
                             Replacement
-                            <span class="font-normal normal-case opacity-70 ml-1">($1 $2… for groups, $& for full match)</span>
+                            <span
+                                class="font-normal normal-case opacity-70 ml-1"
+                                >($1 $2… for groups, $& for full match)</span
+                            >
                         </label>
                         <input
                             v-model="replacement"
@@ -241,12 +279,18 @@
                         />
                     </div>
                     <!-- Replaced output -->
-                    <div class="flex-1 overflow-auto p-3 sm:p-4 bg-white dark:bg-gray-900">
+                    <div
+                        class="flex-1 overflow-auto p-3 sm:p-4 bg-white dark:bg-gray-900"
+                    >
                         <pre
                             v-if="testString"
                             class="font-mono text-sm leading-relaxed text-gray-900 dark:text-gray-100 whitespace-pre-wrap break-words"
-                        >{{ replacedText }}</pre>
-                        <span v-else class="text-sm text-gray-400 dark:text-gray-600 select-none">
+                            >{{ replacedText }}</pre
+                        >
+                        <span
+                            v-else
+                            class="text-sm text-gray-400 dark:text-gray-600 select-none"
+                        >
                             Replaced output will appear here…
                         </span>
                     </div>
@@ -260,14 +304,17 @@
         >
             <div class="flex items-center gap-2 sm:gap-4">
                 <span v-if="pattern && !regexError">
-                    {{ matchCount }} {{ matchCount === 1 ? 'match' : 'matches' }}
+                    {{ matchCount }}
+                    {{ matchCount === 1 ? "match" : "matches" }}
                 </span>
                 <span v-if="testString">{{ testString.length }} chars</span>
                 <span v-if="activeFlags.length" class="font-mono">
-                    flags: {{ activeFlags.join('') }}
+                    flags: {{ activeFlags.join("") }}
                 </span>
             </div>
-            <span class="select-none opacity-60 hidden sm:inline">Regex Tester</span>
+            <span class="select-none opacity-60 hidden sm:inline"
+                >Regex Tester</span
+            >
         </footer>
     </div>
 </template>
@@ -280,13 +327,18 @@ useHead({ title: "Regex Tester" });
 const isMobile = ref(false);
 const activeTab = ref<"input" | "results">("input");
 
-const updateMobile = () => { isMobile.value = window.innerWidth < 768; };
-onMounted(() => { updateMobile(); window.addEventListener("resize", updateMobile); });
+const updateMobile = () => {
+    isMobile.value = window.innerWidth < 768;
+};
+onMounted(() => {
+    updateMobile();
+    window.addEventListener("resize", updateMobile);
+});
 onUnmounted(() => window.removeEventListener("resize", updateMobile));
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 
-const FLAG_LIST = ["g", "i", "m", "s", "u"] as const;
+const FLAG_LIST = ["g", "i", "m", "s", "u", "y"] as const;
 type Flag = (typeof FLAG_LIST)[number];
 
 const FLAG_LABELS: Record<Flag, string> = {
@@ -295,26 +347,32 @@ const FLAG_LABELS: Record<Flag, string> = {
     m: "Multiline — ^ and $ match line boundaries",
     s: "Dot-all — dot matches newlines",
     u: "Unicode",
+    y: "Sticky — matches only at lastIndex",
 };
 
 // ── State ─────────────────────────────────────────────────────────────────────
 
 const pattern = ref("\\b\\w{4}\\b");
-const flags = reactive<Record<Flag, boolean>>({ g: true, i: false, m: false, s: false, u: false });
+const flags = reactive<Record<Flag, boolean>>({
+    g: true,
+    i: false,
+    m: false,
+    s: false,
+    u: false,
+    y: false,
+});
 const testString = ref(
-`The quick brown fox jumps over the lazy dog.
+    `The quick brown fox jumps over the lazy dog.
 Pack my box with five dozen liquor jugs.
 How vexingly quick daft zebras jump!
-The five boxing wizards jump quickly.`
+The five boxing wizards jump quickly.`,
 );
 const replacement = ref("");
 const rightTab = ref<"match" | "replace">("match");
 
 // ── Computed: flags string ────────────────────────────────────────────────────
 
-const flagString = computed(() =>
-    FLAG_LIST.filter((f) => flags[f]).join("")
-);
+const flagString = computed(() => FLAG_LIST.filter((f) => flags[f]).join(""));
 const activeFlags = computed(() => FLAG_LIST.filter((f) => flags[f]));
 
 // ── Core: regex execution ─────────────────────────────────────────────────────
@@ -323,7 +381,10 @@ const regexError = ref("");
 
 const matches = computed((): RegExpExecArray[] => {
     const pat = pattern.value;
-    if (!pat) { regexError.value = ""; return []; }
+    if (!pat) {
+        regexError.value = "";
+        return [];
+    }
     try {
         const re = new RegExp(pat, flagString.value);
         regexError.value = "";
