@@ -452,13 +452,4 @@ const clearAll = () => {
 .json-null {
     @apply text-red-500    dark:text-red-400;
 }
-
-/* Larger touch targets on mobile */
-@media (max-width: 767px) {
-    .touch-target button,
-    .touch-target {
-        min-width: 36px;
-        min-height: 36px;
-    }
-}
 </style>

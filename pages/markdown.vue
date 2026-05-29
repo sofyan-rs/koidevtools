@@ -47,7 +47,7 @@
 
         <!-- Toolbar -->
         <div
-            class="flex items-center gap-0.5 px-2 sm:px-3 py-1.5 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shrink-0 flex-wrap"
+            class="flex items-center content-start gap-0.5 px-2 sm:px-3 py-1.5 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shrink-0 flex-wrap"
         >
             <!-- Hide toolbar on mobile preview tab -->
             <template v-if="activeTab === 'editor' || !isMobile">
@@ -543,14 +543,3 @@ const insertMarkdown = (before: string, after: string, placeholder: string) => {
     });
 };
 </script>
-
-<style>
-/* Larger touch targets for toolbar buttons on mobile */
-@media (max-width: 767px) {
-    .touch-target button,
-    .touch-target {
-        min-width: 36px;
-        min-height: 36px;
-    }
-}
-</style>
